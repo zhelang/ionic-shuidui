@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
+import { Monster } from '../../components/monster-list/monster';
+
+import { GetMonsterService } from '../../providers/get-monster.service';
 /*
   Generated class for the Achieve page.
 
@@ -12,8 +15,22 @@ import { NavController, NavParams } from 'ionic-angular';
   templateUrl: 'achieve.html'
 })
 export class AchievePage {
+  idArr: number[] = [];
+  monstersCatched: Monster[] = [];
+  constructor(public navCtrl: NavController, public navParams: NavParams, private getMonsters: GetMonsterService) {
+    this.idArr.push(Number(localStorage.getItem('monster')));
+    console.log(this.idArr);
+    // this.monstersCatched.push(this.getMonsters.send(3));
+    this.cage();
+    console.log(this.monstersCatched);    
+  }
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+  cage() {
+    let len = this.idArr.length;
+    for(let i = 0; i < len; i++) {
+      this.monstersCatched.push(this.getMonsters.send(this.idArr[i]));
+    }
+  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AchievePage');

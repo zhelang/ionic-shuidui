@@ -66,12 +66,6 @@ export class ChaseComponent {
     console.log('Hello Chase Component');
     console.log(this.file.dataDirectory);
     this.text = 'Hello World';
-    this.file.checkDir(this.file.dataDirectory, 'goals')
-      .then(_ => console.log('Directory exists'))
-      .catch(err => console.log('Directory doesnt exist'));
-    this.file.createDir(this.file.dataDirectory, 'tryme', false)
-      .then(() => console.log('create'))
-      .catch(() => console.log('err create'));
   }
 
   ngAfterViewInit() {
@@ -108,5 +102,8 @@ export class ChaseComponent {
   catch() {
     this.isStopped = !this.isStopped;
     this.moveState = 'move';
+    let x = Math.floor(Math.random() * 5);
+    this.monstersArr.push(this.getMonster.send(x));
+    localStorage.setItem('monster', x.toString());
   }
 }

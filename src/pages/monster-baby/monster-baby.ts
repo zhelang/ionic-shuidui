@@ -16,7 +16,6 @@ import { GetMonsterService } from '../../providers/get-monster.service';
 })
 export class MonsterBabyPage {
   monstersArr: Monster[] = [];
-  category: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private getMonster: GetMonsterService) {
     this.monstersArr = this.getMonster.pushMonstersArr();
