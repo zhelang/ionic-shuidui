@@ -18,7 +18,8 @@ export class AchievePage {
   idArr: number[] = [];
   monstersCatched: Monster[] = [];
   constructor(public navCtrl: NavController, public navParams: NavParams, private getMonsters: GetMonsterService) {
-    this.idArr.push(Number(localStorage.getItem('monster')));
+    // localStorage.setItem('idArr', JSON.stringify(this.idArr));
+    this.idArr = JSON.parse(localStorage.getItem('idArr'));
     console.log(this.idArr);
     // this.monstersCatched.push(this.getMonsters.send(3));
     this.cage();
@@ -26,10 +27,16 @@ export class AchievePage {
   }
 
   cage() {
-    let len = this.idArr.length;
-    for(let i = 0; i < len; i++) {
-      this.monstersCatched.push(this.getMonsters.send(this.idArr[i]));
+    if(this.idArr !== null) {
+      let len = this.idArr.length;
+      for(let i = 0; i < len; i++) {
+        this.monstersCatched.push(this.getMonsters.send(this.idArr[i]));
+      }
     }
+  }
+
+  reset() {
+    localStorage.setItem('idArr', JSON.stringify([]));
   }
 
   ionViewDidLoad() {

@@ -63,9 +63,11 @@ export class ChaseComponent {
   result: string = '發射小球';
 
   constructor(private getMonster: GetMonsterService, private file: File) {
-    console.log('Hello Chase Component');
-    console.log(this.file.dataDirectory);
     this.text = 'Hello World';
+    // if(JSON.parse(localStorage.getItem('idArr')).length == null) {
+    //   let idArr = [];
+    //   localStorage.setItem('idArr', JSON.stringify(idArr));      
+    // }
   }
 
   ngAfterViewInit() {
@@ -103,7 +105,36 @@ export class ChaseComponent {
     this.isStopped = !this.isStopped;
     this.moveState = 'move';
     let x = Math.floor(Math.random() * 5);
+    console.log(x);
     this.monstersArr.push(this.getMonster.send(x));
-    localStorage.setItem('monster', x.toString());
+    let idArr = JSON.parse(localStorage.getItem('idArr'));
+    if(idArr == null) {
+      idArr = [];
+    }
+    idArr.push(x);
+    localStorage.setItem('idArr', JSON.stringify(idArr));
+  }
+
+  playAgain() {
+    this.isStopped = false;
+    this.moveState = 'stop';
+    let inId = setInterval(() => {
+      this.left = (this.left + 20) % 360;
+      if(this.isStopped) {
+        clearInterval(inId);
+        if(Math.abs(this.left - window.innerWidth / 2) < 50) {
+          setTimeout(() => {
+            this.result = '抓到咯！！';
+            console.log('win');
+          }, 800);
+        }
+        else {
+          setTimeout(() => {
+            this.result = '跑掉啦！！';
+            console.log('lose');
+          }, 800);
+        }
+      }
+    }, 1000/30);
   }
 }
