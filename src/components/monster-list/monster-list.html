@@ -1,0 +1,19 @@
+<!--
+  Generated template for the MonsterList component.
+
+  See https://angular.io/docs/ts/latest/api/core/index/ComponentMetadata-class.html
+  for more info on Angular 2 Components.
+-->
+<ion-content (ionScrollEnd)="pageScroll()">
+  <div class="container">
+  <!--<div class="container" (scroll)="pageScroll()">-->
+    <div>
+      <div *ngFor="let column of columns" class="column">
+        <div *ngFor="let row of rows" class="row"
+        (click)="changeColor($event.target, column, row)" #block></div>
+      </div>
+    </div>
+  </div>
+</ion-content>
+
+<button ion-button class="btnMon" (click)="presentAlert()">click</button>

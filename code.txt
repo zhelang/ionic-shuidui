@@ -1,0 +1,9 @@
+      android
+      <meta-data
+          android:name="io.fabric.ApiKey"
+          android:value="971d1947f50122116d3565e6fd0357f0ce7d5825"
+      />
+
+      Twitter:
+      	Consumer Key (API Key)	69N69QY4H98tj9OKhhfEqWKGp
+        Consumer Secret (API Secret)	ruJ1Ulpl9j4wLEvldZ6qKuGLNRU2rGkxAdje2BaLBKZ2sIbvlJ

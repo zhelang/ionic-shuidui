@@ -1,0 +1,20 @@
+chase {
+    .ball-container {
+        // position: relative;
+    }
+    .ball {
+        position: absolute;
+        background: blue;
+        width: 20px;
+        height: 20px;
+        bottom: 10px;
+        border-radius: 50%;
+    }
+    .catchButton {
+        position: fixed;
+        width: 100%;
+        bottom: 64px;
+        animation: pulse 1.5s infinite;
+        color: hotpink;
+    }
+}

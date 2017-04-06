@@ -1,0 +1,30 @@
+<!--
+  Generated template for the Details page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{item.title}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-card>
+    <img src="{{item.imgSrc}}"/>
+    <ion-card-content>
+      <ion-card-title style="text-align: center">
+        {{item.name}}
+      </ion-card-title>
+      <ion-item>
+        <ion-icon name="person" item-left></ion-icon>
+        author
+        <span item-right>{{item.author}}</span>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

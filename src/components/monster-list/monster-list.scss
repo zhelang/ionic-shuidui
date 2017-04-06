@@ -1,0 +1,27 @@
+monster-list {
+    .container {
+        width: 100vw;
+        height: 150vh;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+    .column {
+        width: 100vw;
+        height: 33.3vw;
+    }
+    .row {
+        width: 33.3%;
+        height: 33.3vw;
+        display: inline-block;
+        border: 1px solid black;
+        box-sizing: border-box;
+        background: yellow;
+    }
+    .btnMon {
+        position: absolute;
+        right: 5px;
+        top: 10px;
+        font-family: "Lobster";
+    }
+}
