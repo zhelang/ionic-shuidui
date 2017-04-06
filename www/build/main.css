@@ -18894,7 +18894,7 @@ ion-split-pane {
   -ms-flex-pack: center;
   justify-content: center;
   border-top: 0.55px solid rgba(0, 0, 0, 0.3);
-  background: #f8f8f8;
+  background: #fff;
 }
 
 .tabs-ios[tabsPlacement=top] .tabbar {
@@ -19058,7 +19058,7 @@ ion-split-pane {
 }
 
 .tabs-md .tabbar {
-  background: #f8f8f8;
+  background: #fff;
 }
 
 .tabs-md .tab-button {
@@ -19259,7 +19259,7 @@ ion-split-pane {
 }
 
 .tabs-wp .tabbar {
-  background: #f8f8f8;
+  background: #fff;
 }
 
 .tabs-wp .tab-button {
