@@ -68,7 +68,7 @@ export class ChaseComponent {
           let x, idArr;
           if(this.isStopped) {
             setTimeout(() => {
-              if(Math.abs(this.left - window.innerWidth / 2) < 300) {
+              if(Math.abs(this.left - window.innerWidth / 2) < 50) {
                 console.log('win');
                 x = Math.floor(Math.random() * 5);
                 console.log(x);
@@ -114,23 +114,5 @@ export class ChaseComponent {
     this.againBtn = 'none';
     this.catchBtn = 'block';
     this.detect();
-    // let inId = setInterval(() => {
-    //   this.left = (this.left + 20) % 360;
-    //   if(this.isStopped) {
-    //     clearInterval(inId);
-    //     if(Math.abs(this.left - window.innerWidth / 2) < 50) {
-    //       setTimeout(() => {
-    //         // this.result = '抓到咯！！';
-    //         console.log('win');
-    //       }, 800);
-    //     }
-    //     else {
-    //       setTimeout(() => {
-    //         // this.result = '跑掉啦！！';
-    //         console.log('lose');
-    //       }, 800);
-    //     }
-    //   }
-    // }, 1000/30);
   }
 }
