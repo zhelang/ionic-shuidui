@@ -18,12 +18,20 @@ export class AchievePage {
   idArr: number[] = [];
   monstersCatched: Monster[] = [];
   constructor(public navCtrl: NavController, public navParams: NavParams, private getMonsters: GetMonsterService) {
-    // localStorage.setItem('idArr', JSON.stringify(this.idArr));
     this.idArr = JSON.parse(localStorage.getItem('idArr'));
     console.log(this.idArr);
-    // this.monstersCatched.push(this.getMonsters.send(3));
     this.cage();
     console.log(this.monstersCatched);    
+  }
+
+  ngDoCheck() {
+    if(this.idArr !== JSON.parse(localStorage.getItem('idArr'))) {
+      console.log(this.idArr);
+      console.log(JSON.parse(localStorage.getItem('idArr')));
+      this.idArr = JSON.parse(localStorage.getItem('idArr'));
+      // this.cage();
+      console.log("change has been detected");
+    }
   }
 
   cage() {
