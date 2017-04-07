@@ -1,0 +1,47 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "com.unarin.cordova.beacon": {
+            "PACKAGE_NAME": "com.ionicframework.twitterhood467166"
+        },
+        "cordova-plugin-console": {
+            "PACKAGE_NAME": "com.ionicframework.twitterhood467166"
+        },
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "com.ionicframework.twitterhood467166"
+        },
+        "cordova-plugin-file": {
+            "PACKAGE_NAME": "com.ionicframework.twitterhood467166"
+        },
+        "cordova-plugin-inappbrowser": {
+            "PACKAGE_NAME": "com.ionicframework.twitterhood467166"
+        },
+        "cordova-plugin-splashscreen": {
+            "PACKAGE_NAME": "com.ionicframework.twitterhood467166"
+        },
+        "cordova-plugin-statusbar": {
+            "PACKAGE_NAME": "com.ionicframework.twitterhood467166"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "com.ionicframework.twitterhood467166"
+        },
+        "ionic-plugin-keyboard": {
+            "PACKAGE_NAME": "com.ionicframework.twitterhood467166"
+        },
+        "twitter-connect-plugin": {
+            "FABRIC_KEY": "fabric_API_key",
+            "PACKAGE_NAME": "com.ionicframework.twitterhood467166"
+        }
+    },
+    "dependent_plugins": {
+        "cordova-plugin-compat": {
+            "PACKAGE_NAME": "com.ionicframework.twitterhood467166"
+        }
+    }
+}

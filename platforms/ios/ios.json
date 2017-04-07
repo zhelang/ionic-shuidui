@@ -47,6 +47,10 @@
                         {
                             "xml": "<feature name=\"File\"><param name=\"ios-package\" value=\"CDVFile\" /><param name=\"onload\" value=\"true\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"LocationManager\"><param name=\"ios-package\" value=\"CDVLocationManager\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -56,6 +60,18 @@
                     "Fabric": [
                         {
                             "xml": "<dict><key>APIKey</key><string>fabric_API_key</string><key>Kits</key><array /></dict>",
+                            "count": 1
+                        }
+                    ],
+                    "NSLocationAlwaysUsageDescription": [
+                        {
+                            "xml": "<string>This app would like to scan for iBeacons even when in the background.</string>",
+                            "count": 1
+                        }
+                    ],
+                    "NSLocationWhenInUseUsageDescription": [
+                        {
+                            "xml": "<string>This app would like to scan for iBeacons while it is in use.</string>",
                             "count": 1
                         }
                     ]
@@ -93,6 +109,9 @@
             "PACKAGE_NAME": "com.ionicframework.twitterhood467166"
         },
         "cordova-plugin-file": {
+            "PACKAGE_NAME": "com.ionicframework.twitterhood467166"
+        },
+        "com.unarin.cordova.beacon": {
             "PACKAGE_NAME": "com.ionicframework.twitterhood467166"
         }
     },
@@ -336,6 +355,56 @@
                 "cordova"
             ],
             "runs": true
+        },
+        {
+            "file": "plugins/com.unarin.cordova.beacon/www/lib/underscore-min-1.6.js",
+            "id": "com.unarin.cordova.beacon.underscorejs",
+            "pluginId": "com.unarin.cordova.beacon",
+            "runs": true
+        },
+        {
+            "file": "plugins/com.unarin.cordova.beacon/www/lib/q.min.js",
+            "id": "com.unarin.cordova.beacon.Q",
+            "pluginId": "com.unarin.cordova.beacon",
+            "runs": true
+        },
+        {
+            "file": "plugins/com.unarin.cordova.beacon/www/LocationManager.js",
+            "id": "com.unarin.cordova.beacon.LocationManager",
+            "pluginId": "com.unarin.cordova.beacon",
+            "merges": [
+                "cordova.plugins"
+            ]
+        },
+        {
+            "file": "plugins/com.unarin.cordova.beacon/www/Delegate.js",
+            "id": "com.unarin.cordova.beacon.Delegate",
+            "pluginId": "com.unarin.cordova.beacon",
+            "runs": true
+        },
+        {
+            "file": "plugins/com.unarin.cordova.beacon/www/model/Region.js",
+            "id": "com.unarin.cordova.beacon.Region",
+            "pluginId": "com.unarin.cordova.beacon",
+            "runs": true
+        },
+        {
+            "file": "plugins/com.unarin.cordova.beacon/www/Regions.js",
+            "id": "com.unarin.cordova.beacon.Regions",
+            "pluginId": "com.unarin.cordova.beacon",
+            "runs": true
+        },
+        {
+            "file": "plugins/com.unarin.cordova.beacon/www/model/CircularRegion.js",
+            "id": "com.unarin.cordova.beacon.CircularRegion",
+            "pluginId": "com.unarin.cordova.beacon",
+            "runs": true
+        },
+        {
+            "file": "plugins/com.unarin.cordova.beacon/www/model/BeaconRegion.js",
+            "id": "com.unarin.cordova.beacon.BeaconRegion",
+            "pluginId": "com.unarin.cordova.beacon",
+            "runs": true
         }
     ],
     "plugin_metadata": {
@@ -348,6 +417,7 @@
         "cordova-plugin-inappbrowser": "1.7.0",
         "twitter-connect-plugin": "0.6.0",
         "cordova-plugin-compat": "1.1.0",
-        "cordova-plugin-file": "4.3.2"
+        "cordova-plugin-file": "4.3.2",
+        "com.unarin.cordova.beacon": "3.4.1"
     }
 }
