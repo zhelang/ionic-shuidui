@@ -18905,7 +18905,7 @@ ion-split-pane {
 .tabs-ios .tab-button {
   padding: 0 2px;
   max-width: 240px;
-  min-height: 49px;
+  min-height: 15px;
   font-size: 10px;
   color: #8c8c8c;
 }
@@ -18932,9 +18932,9 @@ ion-split-pane {
 .tabs-ios .tab-button-icon {
   margin-top: 4px;
   margin-bottom: 1px;
-  min-width: 35px;
-  height: 30px;
-  font-size: 30px;
+  min-width: 20px;
+  height: 15px;
+  font-size: 15px;
   color: #8c8c8c;
 }
 
@@ -18957,7 +18957,7 @@ ion-split-pane {
 
 .tabs-ios[tabsLayout=icon-hide] .tab-button,
 .tabs-ios .tab-button.has-title-only {
-  min-height: 41px;
+  min-height: 7px;
 }
 
 .tabs-ios[tabsLayout=icon-hide] .tab-button .tab-button-text,
@@ -18969,7 +18969,7 @@ ion-split-pane {
 
 .tabs-ios[tabsLayout=title-hide] .tab-button,
 .tabs-ios .tab-button.icon-only {
-  min-height: 41px;
+  min-height: 7px;
 }
 
 .tabs-ios-primary .tabbar {
@@ -19063,7 +19063,7 @@ ion-split-pane {
 
 .tabs-md .tab-button {
   padding: 0;
-  min-height: 5.6rem;
+  min-height: 10px;
   font-weight: normal;
   color: rgba(60, 60, 60, 0.7);
 }
@@ -19103,8 +19103,8 @@ ion-split-pane {
 
 .tabs-md .tab-button-icon {
   margin-top: 1px;
-  min-width: 2.4rem;
-  font-size: 2.4rem;
+  min-width: 5px;
+  font-size: 5px;
   color: rgba(60, 60, 60, 0.7);
   -webkit-transform-origin: 50% 150%;
   transform-origin: 50% 150%;

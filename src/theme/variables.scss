@@ -37,7 +37,8 @@ $tabs-background: #fff;
 // --------------------------------------------------
 // iOS only Sass variables can go here
 $button-ios-small-font-size: 0.9em;
-
+$tabs-ios-tab-min-height: 15px;
+$tabs-ios-tab-icon-size: 15px;
 
 
 // App Material Design Variables
@@ -51,6 +52,8 @@ $alert-md-button-group-flex-direction: row;
 $button-md-outline-border-color: red;
 $button-md-outline-text-color: hotpink;
 $button-md-small-font-size: 0.9em;
+$tabs-md-tab-min-height: 10px;
+$tabs-md-tab-icon-size: 5px;
 
 // App Windows Variables
 // --------------------------------------------------
