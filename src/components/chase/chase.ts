@@ -1,6 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
 import { trigger, animate, state, style, transition, keyframes } from '@angular/animations';
-import { File } from '@ionic-native/file';
 import { Monster } from '../monster-list/monster';
 import { GetMonsterService } from '../../providers/get-monster.service';
 /*
@@ -45,18 +44,12 @@ export class ChaseComponent {
   moveState: string = 'stop';
   left: number = 5;
   isStopped: boolean = false;
-  text: string;
   monstersArr: Monster[] = [];
   result: string = '發射小球';
   catchBtn: string = 'block';
   againBtn: string = 'none';
 
-  constructor(private getMonster: GetMonsterService, private file: File) {
-    this.text = 'Hello World';
-    // if(JSON.parse(localStorage.getItem('idArr')).length == null) {
-    //   let idArr = [];
-    //   localStorage.setItem('idArr', JSON.stringify(idArr));      
-    // }
+  constructor(private getMonster: GetMonsterService) {
   }
 
   ngAfterViewInit() {
@@ -64,26 +57,28 @@ export class ChaseComponent {
       this.left = (this.left + 20) % 360;
       if(this.isStopped) {
         clearInterval(inId);
-        if(Math.abs(this.left - window.innerWidth / 2) < 50) {
-          setTimeout(() => {
-            // this.result = '抓到咯！！';
+        setTimeout(() => {
+          if(Math.abs(this.left - window.innerWidth / 2) < 50) {
             console.log('win');
-          }, 800);
-        }
-        else {
-          setTimeout(() => {
-            // this.result = '跑掉啦！！';
+          }
+          else {
             console.log('lose');
-          }, 800);
-        }
+          }
+        }, 800);
+        // if(Math.abs(this.left - window.innerWidth / 2) < 50) {
+        //   setTimeout(() => {
+        //     // this.result = '抓到咯！！';
+        //     console.log('win');
+        //   }, 800);
+        // }
+        // else {
+        //   setTimeout(() => {
+        //     // this.result = '跑掉啦！！';
+        //     console.log('lose');
+        //   }, 800);
+        // }
       }
     }, 1000/30);
-  }
-
-  tap() {
-    let x = Math.floor(Math.random() * this.monstersArr.length);
-    this.monstersArr.push(this.getMonster.send(x));
-    console.log(this.monstersArr);
   }
 
   ani() {
