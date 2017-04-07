@@ -1,8 +1,9 @@
 import { Component, ViewChild } from '@angular/core';
 import { trigger, animate, state, style, transition, keyframes } from '@angular/animations';
-import { File } from '@ionic-native/file';
 import { Monster } from '../monster-list/monster';
 import { GetMonsterService } from '../../providers/get-monster.service';
+
+import _ from 'lodash';
 /*
   Generated class for the Chase component.
 
@@ -45,63 +46,64 @@ export class ChaseComponent {
   moveState: string = 'stop';
   left: number = 5;
   isStopped: boolean = false;
-  text: string;
   monstersArr: Monster[] = [];
   result: string = '發射小球';
   catchBtn: string = 'block';
   againBtn: string = 'none';
 
-  constructor(private getMonster: GetMonsterService, private file: File) {
-    this.text = 'Hello World';
-    // if(JSON.parse(localStorage.getItem('idArr')).length == null) {
-    //   let idArr = [];
-    //   localStorage.setItem('idArr', JSON.stringify(idArr));      
-    // }
+  constructor(private getMonster: GetMonsterService) {
   }
 
   ngAfterViewInit() {
-    let inId = setInterval(() => {
-      this.left = (this.left + 20) % 360;
-      if(this.isStopped) {
-        clearInterval(inId);
-        if(Math.abs(this.left - window.innerWidth / 2) < 50) {
-          setTimeout(() => {
-            // this.result = '抓到咯！！';
-            console.log('win');
-          }, 800);
-        }
-        else {
-          setTimeout(() => {
-            // this.result = '跑掉啦！！';
-            console.log('lose');
-          }, 800);
-        }
-      }
-    }, 1000/30);
-  }
-
-  tap() {
-    let x = Math.floor(Math.random() * this.monstersArr.length);
-    this.monstersArr.push(this.getMonster.send(x));
-    console.log(this.monstersArr);
+    this.detect();
   }
 
   ani() {
     this.state = this.state == 'active'?'inactive':'active';
   }
 
+  detect() {
+    let inId = setInterval(() => {
+          this.left = (this.left + 20) % 360;
+          let x, idArr;
+          if(this.isStopped) {
+            setTimeout(() => {
+              if(Math.abs(this.left - window.innerWidth / 2) < 50) {
+                console.log('win');
+                x = Math.floor(Math.random() * 5);
+                console.log(x);
+                idArr = JSON.parse(localStorage.getItem('idArr'));
+                if(idArr == null || _.isEqual(idArr, [])) {
+                  idArr = [];
+                  idArr.push(x);
+                  this.monstersArr.push(this.getMonster.send(x));
+                  console.log(idArr);
+                  localStorage.setItem('idArr', JSON.stringify(idArr));
+                  return;
+                }
+                for(let i = 0; i < idArr.length; i++) {
+                  if(x == idArr[i]) {
+                    console.log("break");
+                    return;
+                  }
+                }
+                idArr.push(x);
+                console.log(idArr);
+                this.monstersArr.push(this.getMonster.send(x));
+                localStorage.setItem('idArr', JSON.stringify(idArr));
+              }
+              else {
+                console.log('lose');
+              }
+            }, 800);
+            clearInterval(inId);
+          }
+        }, 1000/30);
+  }
+
   catch() {
-    this.isStopped = !this.isStopped;
+    this.isStopped = true;
     this.moveState = 'move';
-    let x = Math.floor(Math.random() * 5);
-    console.log(x);
-    this.monstersArr.push(this.getMonster.send(x));
-    let idArr = JSON.parse(localStorage.getItem('idArr'));
-    if(idArr == null) {
-      idArr = [];
-    }
-    idArr.push(x);
-    localStorage.setItem('idArr', JSON.stringify(idArr));
     this.againBtn = 'block';
     this.catchBtn = 'none';
   }
@@ -111,23 +113,6 @@ export class ChaseComponent {
     this.moveState = 'stop';
     this.againBtn = 'none';
     this.catchBtn = 'block';
-    let inId = setInterval(() => {
-      this.left = (this.left + 20) % 360;
-      if(this.isStopped) {
-        clearInterval(inId);
-        if(Math.abs(this.left - window.innerWidth / 2) < 50) {
-          setTimeout(() => {
-            // this.result = '抓到咯！！';
-            console.log('win');
-          }, 800);
-        }
-        else {
-          setTimeout(() => {
-            // this.result = '跑掉啦！！';
-            console.log('lose');
-          }, 800);
-        }
-      }
-    }, 1000/30);
+    this.detect();
   }
 }
