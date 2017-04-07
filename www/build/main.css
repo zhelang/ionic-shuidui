@@ -24535,6 +24535,15 @@ chase .catchButton {
   color: hotpink;
 }
 
+chase .againButton {
+  position: fixed;
+  width: 100%;
+  bottom: 64px;
+  -webkit-animation: pulse 1.5s infinite;
+  animation: pulse 1.5s infinite;
+  color: hotpink;
+}
+
 monster-list .container {
   width: 100vw;
   height: 150vh;

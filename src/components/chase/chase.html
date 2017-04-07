@@ -15,10 +15,12 @@
   <div class="ball-container" [@parentMove]="moveState">
       <div class="ball" [@moveForward]="moveState" [style.left]="left + 'px'"></div>
   </div>
-  <div class="catchButton">
+  <div class="catchButton" [style.display]="catchBtn">
     <button ion-button block outline full (click)="catch()">
       <ion-icon name="ios-baseball-outline">{{result}}</ion-icon>
-    </button>
-    <button ion-button (click)="playAgain()">again</button>
+    </button>    
+  </div>
+  <div class="againButton" [style.display]="againBtn">
+    <button ion-button block outline full (click)="playAgain()">again</button>
   </div>
 </ion-content>

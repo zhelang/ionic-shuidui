@@ -30,9 +30,6 @@ export class MonsterCardsComponent {
 
   ngOnChanges() {
     this.cage();
-    console.log(this.cardIdArr);
-    console.log(this.monstersCatched);
-    console.log("changes cards");
   }
 
   cage() {

@@ -61,6 +61,8 @@ export class ChaseComponent {
   text: string;
   monstersArr: Monster[] = [];
   result: string = '發射小球';
+  catchBtn: string = 'block';
+  againBtn: string = 'none';
 
   constructor(private getMonster: GetMonsterService, private file: File) {
     this.text = 'Hello World';
@@ -77,13 +79,13 @@ export class ChaseComponent {
         clearInterval(inId);
         if(Math.abs(this.left - window.innerWidth / 2) < 50) {
           setTimeout(() => {
-            this.result = '抓到咯！！';
+            // this.result = '抓到咯！！';
             console.log('win');
           }, 800);
         }
         else {
           setTimeout(() => {
-            this.result = '跑掉啦！！';
+            // this.result = '跑掉啦！！';
             console.log('lose');
           }, 800);
         }
@@ -113,24 +115,28 @@ export class ChaseComponent {
     }
     idArr.push(x);
     localStorage.setItem('idArr', JSON.stringify(idArr));
+    this.againBtn = 'block';
+    this.catchBtn = 'none';
   }
 
   playAgain() {
     this.isStopped = false;
     this.moveState = 'stop';
+    this.againBtn = 'none';
+    this.catchBtn = 'block';
     let inId = setInterval(() => {
       this.left = (this.left + 20) % 360;
       if(this.isStopped) {
         clearInterval(inId);
         if(Math.abs(this.left - window.innerWidth / 2) < 50) {
           setTimeout(() => {
-            this.result = '抓到咯！！';
+            // this.result = '抓到咯！！';
             console.log('win');
           }, 800);
         }
         else {
           setTimeout(() => {
-            this.result = '跑掉啦！！';
+            // this.result = '跑掉啦！！';
             console.log('lose');
           }, 800);
         }
