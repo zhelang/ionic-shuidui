@@ -20,9 +20,10 @@ import { GetMonsterService } from '../../providers/get-monster.service';
           })),
           state('move', style({
             opacity: 0.0,
+            transform: 'translateY(0px)',
           })),
-          transition('void => stop', animate('1000ms ease-in')),
-          transition('stop => move', [
+          transition('* => stop', animate('100ms ease-in')),
+          transition('stop <=> move', [
             animate('1000ms', keyframes([
               style({opacity: 1.0, transform: "translateY(0px)", offset: 0}),
               style({opacity: 0.9, transform: "translateY(10px)" , offset: 0.3}),
@@ -43,9 +44,14 @@ export class HuntingPage {
 
   hunting(x: number) {
     this.monsterId = x;
-    // this.monster = this.getMonster.send(x);
     this.otherPic = this.getMonster.send(x).imgSrc;
+    console.log(this.otherPic);
     this.picComing = 'move';
+    console.log(this.picComing);
+    setTimeout(() => {
+      this.picComing = 'stop';
+      console.log(this.picComing);
+    }, 1500);
   }
 
   ionViewDidLoad() {
