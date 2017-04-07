@@ -5450,7 +5450,7 @@ button[disabled],
 .button-small-ios {
   padding: 0 0.9em;
   height: 2.1em;
-  font-size: 1.3rem;
+  font-size: 0.9em;
 }
 
 .button-small-ios[icon-only] ion-icon {
@@ -5717,7 +5717,7 @@ button[disabled],
 .button-small-md {
   padding: 0 0.9em;
   height: 2.1em;
-  font-size: 1.3rem;
+  font-size: 0.9em;
 }
 
 .button-small-md[icon-only] ion-icon {

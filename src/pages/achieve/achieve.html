@@ -26,5 +26,10 @@
     </ion-card-content>
   </ion-card>-->
   <monster-cards [cardIdArr]="idArr"></monster-cards>
-  <button ion-button (click)="reset()">reset</button>
+  <ion-item>
+    <button ion-button small (click)="reset()" item-right icon-left>
+      <ion-icon name="star"></ion-icon>
+      reset
+    </button>
+  </ion-item>
 </ion-content>
