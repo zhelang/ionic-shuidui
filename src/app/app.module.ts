@@ -1,6 +1,5 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
-import { File } from '@ionic-native/file';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MyApp } from './app.component';
 import { AboutPage } from '../pages/about/about';
@@ -18,7 +17,6 @@ import { ChaseComponent } from '../components/chase/chase';
 import { MonsterCardsComponent } from '../components/monster-cards/monster-cards';
 
 //providers
-import { TwitterUtils } from '../providers/twitter-utils';
 import { GetMonsterService } from '../providers/get-monster.service';
 
 @NgModule({
@@ -52,6 +50,6 @@ import { GetMonsterService } from '../providers/get-monster.service';
     HuntingPage,
     DetailsPage,
   ],
-  providers: [TwitterUtils, File, GetMonsterService, {provide: ErrorHandler, useClass: IonicErrorHandler}]
+  providers: [GetMonsterService, {provide: ErrorHandler, useClass: IonicErrorHandler}]
 })
 export class AppModule {}

@@ -7,11 +7,8 @@ import { LoginPage } from '../pages/login/login';
 import { LogoPage } from '../pages/logo/logo';
 import { RedditPage } from '../pages/reddit/reddit';
 
-import { RedditService } from '../providers/reddit.service';
-
 @Component({
   templateUrl: 'app.html',
-  providers: [RedditService]
 })
 export class MyApp {
   // rootPage = LogoPage;

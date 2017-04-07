@@ -2,6 +2,8 @@ import { Component, ViewChild } from '@angular/core';
 import { trigger, animate, state, style, transition, keyframes } from '@angular/animations';
 import { Monster } from '../monster-list/monster';
 import { GetMonsterService } from '../../providers/get-monster.service';
+
+import _ from 'lodash';
 /*
   Generated class for the Chase component.
 
@@ -54,29 +56,6 @@ export class ChaseComponent {
 
   ngAfterViewInit() {
     this.detect();
-    // let inId = setInterval(() => {
-    //   this.left = (this.left + 20) % 360;
-    //   if(this.isStopped) {
-    //     clearInterval(inId);
-    //     setTimeout(() => {
-    //       if(Math.abs(this.left - window.innerWidth / 2) < 50) {
-    //         console.log('win');
-    //         let x = Math.floor(Math.random() * 5);
-    //         console.log(x);
-    //         this.monstersArr.push(this.getMonster.send(x));
-    //         let idArr = JSON.parse(localStorage.getItem('idArr'));
-    //         if(idArr == null) {
-    //           idArr = [];
-    //         }
-    //         idArr.push(x);
-    //         localStorage.setItem('idArr', JSON.stringify(idArr));
-    //       }
-    //       else {
-    //         console.log('lose');
-    //       }
-    //     }, 800);
-    //   }
-    // }, 1000/30);
   }
 
   ani() {
@@ -86,41 +65,45 @@ export class ChaseComponent {
   detect() {
     let inId = setInterval(() => {
           this.left = (this.left + 20) % 360;
+          let x, idArr;
           if(this.isStopped) {
-            clearInterval(inId);
             setTimeout(() => {
-              if(Math.abs(this.left - window.innerWidth / 2) < 50) {
+              if(Math.abs(this.left - window.innerWidth / 2) < 300) {
                 console.log('win');
-                let x = Math.floor(Math.random() * 5);
+                x = Math.floor(Math.random() * 5);
                 console.log(x);
-                this.monstersArr.push(this.getMonster.send(x));
-                let idArr = JSON.parse(localStorage.getItem('idArr'));
-                if(idArr == null) {
+                idArr = JSON.parse(localStorage.getItem('idArr'));
+                if(idArr == null || _.isEqual(idArr, [])) {
                   idArr = [];
+                  idArr.push(x);
+                  this.monstersArr.push(this.getMonster.send(x));
+                  console.log(idArr);
+                  localStorage.setItem('idArr', JSON.stringify(idArr));
+                  return;
+                }
+                for(let i = 0; i < idArr.length; i++) {
+                  if(x == idArr[i]) {
+                    console.log("break");
+                    return;
+                  }
                 }
                 idArr.push(x);
+                console.log(idArr);
+                this.monstersArr.push(this.getMonster.send(x));
                 localStorage.setItem('idArr', JSON.stringify(idArr));
               }
               else {
                 console.log('lose');
               }
             }, 800);
+            clearInterval(inId);
           }
         }, 1000/30);
   }
 
   catch() {
-    this.isStopped = !this.isStopped;
+    this.isStopped = true;
     this.moveState = 'move';
-    // let x = Math.floor(Math.random() * 5);
-    // console.log(x);
-    // this.monstersArr.push(this.getMonster.send(x));
-    // let idArr = JSON.parse(localStorage.getItem('idArr'));
-    // if(idArr == null) {
-    //   idArr = [];
-    // }
-    // idArr.push(x);
-    // localStorage.setItem('idArr', JSON.stringify(idArr));
     this.againBtn = 'block';
     this.catchBtn = 'none';
   }

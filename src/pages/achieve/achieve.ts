@@ -22,24 +22,17 @@ export class AchievePage {
   resetArr: boolean = false;
   constructor(public navCtrl: NavController, public navParams: NavParams, private getMonsters: GetMonsterService) {
     this.idArr = JSON.parse(localStorage.getItem('idArr'));
-    console.log(this.idArr);
+    // console.log(this.idArr);
     // this.cage();
-    console.log(this.monstersCatched);    
+    // console.log(this.monstersCatched);    
   }
 
   ngDoCheck() {
-    if(!_.isEqual( this.idArr, JSON.parse(localStorage.getItem('idArr')))) {
+    if(!_.isEqual(this.idArr, JSON.parse(localStorage.getItem('idArr')))) {
       this.idArr = JSON.parse(localStorage.getItem('idArr'));
       // this.cage();
-      console.log("change has been detected");
+      // console.log("change has been detected");
     }
-    // if(this.resetArr) {
-    //   localStorage.setItem('idArr', JSON.stringify([]));
-    //   this.idArr = JSON.parse(localStorage.getItem('idArr'));
-    //   // this.cage();
-    //   this.resetArr = false;
-    //   console.log("reset arr");
-    // }
   }
 
   cage() {

@@ -24,23 +24,21 @@ export class MonsterCardsComponent {
   constructor(private getMonsters: GetMonsterService, public navCtrl: NavController) {
   }
 
-  ngAfterViewInit() {
-    this.cage();
-  }
-
   ngOnChanges() {
     this.cage();
   }
 
   cage() {
-    if(this.cardIdArr !== null) {
+    if(this.cardIdArr !== null && !_.isEqual(this.cardIdArr, [])) {
       let len = this.cardIdArr.length;
       for(let i = 0; i < len; i++) {
         this.monstersCatched[i] = this.getMonsters.send(this.cardIdArr[i]);
       }
+      console.log("not null");
     }
     if(_.isEqual(this.cardIdArr, [])) {
       this.monstersCatched = [];
+      console.log("empty");
     }
   }
 }
