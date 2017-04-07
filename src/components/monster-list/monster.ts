@@ -7,8 +7,8 @@
 //     minor: number;
 // }
 export class Monster {
-    name: String;
-    imgSrc: String;
+    name: string;
+    imgSrc: string;
     id: number;
-    author: String;
+    author: string;
 }
