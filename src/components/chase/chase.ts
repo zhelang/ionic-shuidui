@@ -53,50 +53,74 @@ export class ChaseComponent {
   }
 
   ngAfterViewInit() {
-    let inId = setInterval(() => {
-      this.left = (this.left + 20) % 360;
-      if(this.isStopped) {
-        clearInterval(inId);
-        setTimeout(() => {
-          if(Math.abs(this.left - window.innerWidth / 2) < 50) {
-            console.log('win');
-          }
-          else {
-            console.log('lose');
-          }
-        }, 800);
-        // if(Math.abs(this.left - window.innerWidth / 2) < 50) {
-        //   setTimeout(() => {
-        //     // this.result = '抓到咯！！';
-        //     console.log('win');
-        //   }, 800);
-        // }
-        // else {
-        //   setTimeout(() => {
-        //     // this.result = '跑掉啦！！';
-        //     console.log('lose');
-        //   }, 800);
-        // }
-      }
-    }, 1000/30);
+    this.detect();
+    // let inId = setInterval(() => {
+    //   this.left = (this.left + 20) % 360;
+    //   if(this.isStopped) {
+    //     clearInterval(inId);
+    //     setTimeout(() => {
+    //       if(Math.abs(this.left - window.innerWidth / 2) < 50) {
+    //         console.log('win');
+    //         let x = Math.floor(Math.random() * 5);
+    //         console.log(x);
+    //         this.monstersArr.push(this.getMonster.send(x));
+    //         let idArr = JSON.parse(localStorage.getItem('idArr'));
+    //         if(idArr == null) {
+    //           idArr = [];
+    //         }
+    //         idArr.push(x);
+    //         localStorage.setItem('idArr', JSON.stringify(idArr));
+    //       }
+    //       else {
+    //         console.log('lose');
+    //       }
+    //     }, 800);
+    //   }
+    // }, 1000/30);
   }
 
   ani() {
     this.state = this.state == 'active'?'inactive':'active';
   }
 
+  detect() {
+    let inId = setInterval(() => {
+          this.left = (this.left + 20) % 360;
+          if(this.isStopped) {
+            clearInterval(inId);
+            setTimeout(() => {
+              if(Math.abs(this.left - window.innerWidth / 2) < 50) {
+                console.log('win');
+                let x = Math.floor(Math.random() * 5);
+                console.log(x);
+                this.monstersArr.push(this.getMonster.send(x));
+                let idArr = JSON.parse(localStorage.getItem('idArr'));
+                if(idArr == null) {
+                  idArr = [];
+                }
+                idArr.push(x);
+                localStorage.setItem('idArr', JSON.stringify(idArr));
+              }
+              else {
+                console.log('lose');
+              }
+            }, 800);
+          }
+        }, 1000/30);
+  }
+
   catch() {
     this.isStopped = !this.isStopped;
     this.moveState = 'move';
-    let x = Math.floor(Math.random() * 5);
-    console.log(x);
-    this.monstersArr.push(this.getMonster.send(x));
-    let idArr = JSON.parse(localStorage.getItem('idArr'));
-    if(idArr == null) {
-      idArr = [];
-    }
-    idArr.push(x);
-    localStorage.setItem('idArr', JSON.stringify(idArr));
+    // let x = Math.floor(Math.random() * 5);
+    // console.log(x);
+    // this.monstersArr.push(this.getMonster.send(x));
+    // let idArr = JSON.parse(localStorage.getItem('idArr'));
+    // if(idArr == null) {
+    //   idArr = [];
+    // }
+    // idArr.push(x);
+    // localStorage.setItem('idArr', JSON.stringify(idArr));
     this.againBtn = 'block';
     this.catchBtn = 'none';
   }
@@ -106,23 +130,24 @@ export class ChaseComponent {
     this.moveState = 'stop';
     this.againBtn = 'none';
     this.catchBtn = 'block';
-    let inId = setInterval(() => {
-      this.left = (this.left + 20) % 360;
-      if(this.isStopped) {
-        clearInterval(inId);
-        if(Math.abs(this.left - window.innerWidth / 2) < 50) {
-          setTimeout(() => {
-            // this.result = '抓到咯！！';
-            console.log('win');
-          }, 800);
-        }
-        else {
-          setTimeout(() => {
-            // this.result = '跑掉啦！！';
-            console.log('lose');
-          }, 800);
-        }
-      }
-    }, 1000/30);
+    this.detect();
+    // let inId = setInterval(() => {
+    //   this.left = (this.left + 20) % 360;
+    //   if(this.isStopped) {
+    //     clearInterval(inId);
+    //     if(Math.abs(this.left - window.innerWidth / 2) < 50) {
+    //       setTimeout(() => {
+    //         // this.result = '抓到咯！！';
+    //         console.log('win');
+    //       }, 800);
+    //     }
+    //     else {
+    //       setTimeout(() => {
+    //         // this.result = '跑掉啦！！';
+    //         console.log('lose');
+    //       }, 800);
+    //     }
+    //   }
+    // }, 1000/30);
   }
 }
