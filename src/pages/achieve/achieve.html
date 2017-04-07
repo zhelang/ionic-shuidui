@@ -14,8 +14,7 @@
 
 
 <ion-content padding>
-  <ion-card *ngFor="let item of monstersCatched">
-    <!--<img src="img/nin-live.png"/>-->
+  <!--<ion-card *ngFor="let item of monstersCatched">
     <ion-card-content>
       <ion-card-title>
         {{item.name}}  
@@ -25,6 +24,7 @@
         responsible for bringing the music to a mass audience.
       </p>
     </ion-card-content>
-  </ion-card>
+  </ion-card>-->
+  <monster-cards [cardIdArr]="idArr"></monster-cards>
   <button ion-button (click)="reset()">reset</button>
 </ion-content>

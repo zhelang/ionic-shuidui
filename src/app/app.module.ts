@@ -15,6 +15,7 @@ import { DetailsPage } from '../pages/details/details';
 //components
 import { MonsterList } from '../components/monster-list/monster-list';
 import { ChaseComponent } from '../components/chase/chase';
+import { MonsterCardsComponent } from '../components/monster-cards/monster-cards';
 
 //providers
 import { TwitterUtils } from '../providers/twitter-utils';
@@ -33,6 +34,7 @@ import { GetMonsterService } from '../providers/get-monster.service';
     HuntingPage,
     ChaseComponent,
     DetailsPage,
+    MonsterCardsComponent
   ],
   imports: [
     IonicModule.forRoot(MyApp),

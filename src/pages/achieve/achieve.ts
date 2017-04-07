@@ -4,6 +4,8 @@ import { NavController, NavParams } from 'ionic-angular';
 import { Monster } from '../../components/monster-list/monster';
 
 import { GetMonsterService } from '../../providers/get-monster.service';
+
+import _ from 'lodash';
 /*
   Generated class for the Achieve page.
 
@@ -17,21 +19,27 @@ import { GetMonsterService } from '../../providers/get-monster.service';
 export class AchievePage {
   idArr: number[] = [];
   monstersCatched: Monster[] = [];
+  resetArr: boolean = false;
   constructor(public navCtrl: NavController, public navParams: NavParams, private getMonsters: GetMonsterService) {
     this.idArr = JSON.parse(localStorage.getItem('idArr'));
     console.log(this.idArr);
-    this.cage();
+    // this.cage();
     console.log(this.monstersCatched);    
   }
 
   ngDoCheck() {
-    if(this.idArr !== JSON.parse(localStorage.getItem('idArr'))) {
-      console.log(this.idArr);
-      console.log(JSON.parse(localStorage.getItem('idArr')));
+    if(!_.isEqual( this.idArr, JSON.parse(localStorage.getItem('idArr')))) {
       this.idArr = JSON.parse(localStorage.getItem('idArr'));
       // this.cage();
       console.log("change has been detected");
     }
+    // if(this.resetArr) {
+    //   localStorage.setItem('idArr', JSON.stringify([]));
+    //   this.idArr = JSON.parse(localStorage.getItem('idArr'));
+    //   // this.cage();
+    //   this.resetArr = false;
+    //   console.log("reset arr");
+    // }
   }
 
   cage() {
@@ -44,7 +52,9 @@ export class AchievePage {
   }
 
   reset() {
+    this.resetArr = true;
     localStorage.setItem('idArr', JSON.stringify([]));
+    this.idArr = JSON.parse(localStorage.getItem('idArr'));
   }
 
   ionViewDidLoad() {
