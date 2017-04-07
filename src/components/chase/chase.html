@@ -6,12 +6,9 @@
 -->
 
 <ion-content>
-  <!--<div>
-    <button [@heroState]="state" ion-button block outline (click)="ani()">chase</button>
-  </div>-->
-  <ion-item *ngFor="let item of monstersArr">
+  <!--<ion-item *ngFor="let item of monstersArr">
     <img src="{{item.imgSrc}}" alt="pics">
-  </ion-item>
+  </ion-item>-->
   <div class="ball-container" [@parentMove]="moveState">
       <div class="ball" [@moveForward]="moveState" [style.left]="left + 'px'"></div>
   </div>

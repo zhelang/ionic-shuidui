@@ -13,19 +13,6 @@ import { GetMonsterService } from '../../providers/get-monster.service';
   selector: 'chase',
   templateUrl: 'chase.html',
   animations: [
-      trigger('heroState', [
-        state('inactive', style({
-          backgroundColor: '#8AB404',
-          transform: 'scale(1)'
-        })),
-        state('active', style({
-          backgroundColor: '#cfd8dc',
-          transform: 'scale(1.1)'
-        })),
-        transition('inactive => active', animate('100ms ease-in')),
-        transition('void => inactive', animate('2100ms ease-out')),
-        transition('active => inactive', animate('2100ms ease-out'))
-      ]),
       trigger('moveForward', [
         state('stop', style({
           backgroundColor: '#000',
