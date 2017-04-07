@@ -24544,6 +24544,12 @@ chase .againButton {
   color: hotpink;
 }
 
+chase .littleImg {
+  position: fixed;
+  bottom: 0px;
+  right: 0px;
+}
+
 monster-list .container {
   width: 100vw;
   height: 150vh;
@@ -24577,6 +24583,12 @@ monster-list .btnMon {
   right: 5px;
   top: 10px;
   font-family: "Lobster";
+}
+
+page-hunting .littleImg {
+  position: fixed;
+  bottom: 40px;
+  right: 141px;
 }
 
 page-logo .background {

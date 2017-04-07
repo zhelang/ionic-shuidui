@@ -13,5 +13,8 @@
 </ion-header>
 
 <ion-content>
-  <chase></chase>
+  <chase (catchedId)="hunting($event)"></chase>
+  <div class="littleImg">
+    <img *ngIf="monster" [src]="monster.imgSrc" alt="" width="25" height="25">
+  </div>
 </ion-content>

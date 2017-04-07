@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
+import { Monster } from '../../components/monster-list/monster';
+import { GetMonsterService } from '../../providers/get-monster.service';
 /*
   Generated class for the Hunting page.
 
@@ -12,14 +14,13 @@ import { NavController, NavParams } from 'ionic-angular';
   templateUrl: 'hunting.html'
 })
 export class HuntingPage {
-  message: String;
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+  monsterId: number;
+  monster: Monster;
+  constructor(public navCtrl: NavController, public navParams: NavParams, private getMonster: GetMonsterService) {}
 
-  hunting() {
-    let num = Math.random();
-    if(num < 0.5) {
-      this.message = "got you";
-    }
+  hunting(x: number) {
+    this.monsterId = x;
+    this.monster = this.getMonster.send(x);
   }
 
   ionViewDidLoad() {

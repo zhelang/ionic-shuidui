@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, Output, EventEmitter } from '@angular/core';
 import { trigger, animate, state, style, transition, keyframes } from '@angular/animations';
 import { Monster } from '../monster-list/monster';
 import { GetMonsterService } from '../../providers/get-monster.service';
@@ -50,6 +50,8 @@ export class ChaseComponent {
   result: string = '發射小球';
   catchBtn: string = 'block';
   againBtn: string = 'none';
+  @Output()
+  catchedId: EventEmitter<number> = new EventEmitter<number>();
 
   constructor(private getMonster: GetMonsterService) {
   }
@@ -68,10 +70,11 @@ export class ChaseComponent {
           let x, idArr;
           if(this.isStopped) {
             setTimeout(() => {
-              if(Math.abs(this.left - window.innerWidth / 2) < 50) {
+              if(Math.abs(this.left - window.innerWidth / 2) < 500) {
                 console.log('win');
                 x = Math.floor(Math.random() * 5);
                 console.log(x);
+                this.catchedId.emit(x);
                 idArr = JSON.parse(localStorage.getItem('idArr'));
                 if(idArr == null || _.isEqual(idArr, [])) {
                   idArr = [];
